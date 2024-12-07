@@ -1,90 +1,107 @@
-# Nutritional Food Analysis
+# Beijing Multi-Site Air Quality Analysis
 
-This repository contains the analysis of a nutritional dataset, focusing on identifying patterns, exploring subsets of foods, and visualizing relationships between nutrients. The analysis is designed for insights into dietary goals such as high-protein, low-carb, or high-fat, low-sugar foods.
+This project involves the analysis and prediction of air quality using the Beijing Multi-Site Air Quality dataset. The dataset, sourced from the UCI Machine Learning Repository, includes pollutant concentrations and meteorological data recorded over several years. The project explores the impact of various factors on air quality, builds machine learning models, and provides an interactive application for exploration and prediction.
 
----
+## Table of Contents
 
-## **Objective**
-To analyze and visualize a nutritional dataset to uncover patterns, identify representative food groups, and provide actionable insights for dietary planning.
-
----
-
-## **Steps in Analysis**
-
-### **1. Data Preprocessing**
-- Loaded and inspected the dataset for structure and missing values.
-- Handled missing values by imputing medians for numeric columns.
-- Standardized numeric data for uniform scaling during analysis.
-
-### **2. Exploratory Data Analysis (EDA)**
-- Visualized distributions of key nutrients such as:
-  - Calories (`Energ_Kcal`).
-  - Protein (`Protein_(g)`).
-  - Lipids (`Lipid_Tot_(g)`).
-  - Carbohydrates (`Carbohydrt_(g)`).
-- Generated pairwise scatter plots and correlation heatmaps to explore relationships between nutrients.
-
-### **3. Subset Analysis**
-#### **High-Protein, Low-Carb Foods**
-- Filtered foods in the top 25% of protein and bottom 25% of carbohydrates.
-- Identified unique characteristics:
-  - High protein (~26g on average).
-  - Minimal carbs, sugar, and fiber.
-- Visualized nutrient distributions using bar and radar charts.
-
-#### **High-Fat, Low-Sugar Foods**
-- Filtered foods in the top 40% of fats and bottom 40% of sugars.
-- Observed characteristics:
-  - High fats (~25g on average).
-  - Moderate protein levels (~19.5g).
-  - Minimal sugar and carbs.
-
-### **4. Dimensionality Reduction and Clustering**
-- Applied **PCA** to reduce the dimensions of the dataset for visualization.
-- Performed **K-Means Clustering**:
-  - Created 4 clusters representing groups of foods with similar nutrient profiles.
-  - Visualized clusters using PCA scatter plots.
-
-### **5. Representative Foods**
-- Identified representative foods for each cluster based on proximity to cluster centroids.
-- Representative foods showcase unique nutrient compositions for each group.
+- [Dataset Overview](#dataset-overview)
+- [Analysis Workflow](#analysis-workflow)
+  - [Task 1: Data Handling](#task-1-data-handling)
+  - [Task 2: Exploratory Data Analysis (EDA)](#task-2-exploratory-data-analysis-eda)
+  - [Task 3: Model Building](#task-3-model-building)
+  - [Task 4: Application Development](#task-4-application-development)
+- [Challenges and Learnings](#challenges-and-learnings)
+- [Technologies Used](#technologies-used)
+- [How to Run the Application](#how-to-run-the-application)
+- [References](#references)
 
 ---
 
-## **Visualizations**
-- **Histograms**: Showed nutrient distributions.
-- **Radar Charts**: Highlighted nutritional profiles of specific subsets (e.g., high-protein, low-carb).
-- **Scatter Plots**: Explored pairwise relationships and PCA-based clusters.
+## Dataset Overview
+
+The dataset originates from the Beijing Municipal Environmental Monitoring Center and contains hourly readings from 12 monitoring stations over four years. Key features include:
+
+- **Pollutants:** PM2.5, PM10, SO2, NO2, CO, O3
+- **Meteorological Parameters:** Temperature (TEMP), Pressure (PRES), Dew Point (DEWP), Wind Speed (WSPM), Wind Direction (WD), Rainfall (RAIN)
 
 ---
 
-## **Insights**
-1. High-protein, low-carb foods are dominated by lean meats and seafood.
-2. High-fat, low-sugar foods feature oils and high-calorie items.
-3. Nutritional clustering reveals distinct food groups with unique calorie and nutrient distributions.
+## Analysis Workflow
+
+### Task 1: Data Handling
+
+- **Steps:**
+  - Downloaded and imported data using Python libraries.
+  - Merged pollutant and meteorological datasets by aligning timestamps and stations.
+  - Imputed missing values using station-wise and month-wise averages.
+  - Addressed mismatched timestamps and optimized processing for large datasets.
 
 ---
 
-## **Usage**
-- **Dietary Recommendations**:
-  - For high-protein, low-carb diets: Lean meats, seafood, eggs, and tofu.
-  - For high-fat, low-sugar diets: Oils like safflower and palm.
-- **Clustering for Meal Planning**:
-  - Use cluster insights to plan balanced meals based on nutrient preferences.
+### Task 2: Exploratory Data Analysis (EDA)
+
+- **Steps:**
+  - Preprocessed data by imputing missing values, removing duplicates, and engineering features (e.g., AQI calculation).
+  - Conducted univariate, bivariate, and multivariate analyses.
+  - Visualizations included histograms, scatter plots, and correlation heatmaps.
+  - Principal Component Analysis (PCA) reduced dimensionality while retaining critical information.
 
 ---
 
-## **Future Work**
-1. Explore interactions between micronutrients (e.g., vitamins and minerals).
-2. Build interactive dashboards for better exploration.
-3. Incorporate advanced machine learning for automated dietary recommendations.
+### Task 3: Model Building
+
+- **Steps:**
+  - Preprocessed the data using StandardScaler and LabelEncoder.
+  - Built three models:
+    - k-Nearest Neighbors (k-NN)
+    - Naive Bayes (GaussianNB)
+    - Logistic Regression
+  - Hyperparameters were tuned using GridSearchCV.
+  - Logistic Regression achieved the highest accuracy (99.99%) across all AQI categories.
 
 ---
 
-## **Requirements**
-- Python 3.8+
-- Libraries:
-  - `pandas`
-  - `matplotlib`
-  - `seaborn`
-  - `sklearn`
+### Task 4: Application Development
+
+- **Features:**
+  - **Data Overview:** Summarized dataset and pollutant distributions.
+  - **EDA:** Provided interactive visualizations like histograms, scatter plots, and heatmaps.
+  - **Modeling and Prediction:** Allowed users to predict AQI categories based on input conditions.
+- **Technology:** Developed with Python and Streamlit, with GitHub for version control.
+
+---
+
+## Challenges and Learnings
+
+### Challenges
+
+- Managing large datasets and handling missing data.
+- Addressing class imbalance in AQI categories.
+- Integrating machine learning models into an interactive GUI.
+
+### Learnings
+
+- Advanced skills in data cleaning, feature engineering, and hyperparameter tuning.
+- Experience in creating user-centric applications for data exploration and prediction.
+
+---
+
+## Technologies Used
+
+- **Programming Languages:** Python
+- **Libraries and Tools:** Pandas, NumPy, Scikit-learn, Seaborn, Matplotlib, Streamlit, Joblib
+- **Version Control:** GitHub
+
+---
+
+## How to Run the Application
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-repo/beijing-air-quality-analysis.git
+2. Navigate to the project directory:
+  cd beijing-air-quality-analysis
+3. Install dependencies:
+  pip install -r requirements.txt
+4. Run the Streamlit application:
+  streamlit run app.py
