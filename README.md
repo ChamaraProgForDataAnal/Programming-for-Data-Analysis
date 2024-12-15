@@ -98,7 +98,7 @@ The dataset originates from the Beijing Municipal Environmental Monitoring Cente
 
 1. Clone the repository:
    ```bash
-   [https://github.com/ChamaraProgForDataAnal/Programming-for-Data-Analysis.git]
+   https://github.com/ChamaraProgForDataAnal/Programming-for-Data-Analysis.git
 2. Navigate to the project directory:
   cd beijing-air-quality-analysis
 3. Install dependencies:
